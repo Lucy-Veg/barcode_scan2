@@ -82,7 +82,7 @@ class ScannerOverlay: UIView {
         path.addLine(to: CGPoint(x: holeRect.origin.x, y: bottomHoleY - cornerSize))
         
         path.lineWidth = 2
-        UIColor.green.setStroke()
+        UIColor.white.setStroke()
         path.stroke()
     }
     

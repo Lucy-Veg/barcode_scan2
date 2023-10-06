@@ -39,6 +39,10 @@ class BarcodeScannerViewController: UIViewController {
   
   var delegate: BarcodeScannerViewControllerDelegate?
   
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
+    }
+    
   private var device: AVCaptureDevice? {
     return AVCaptureDevice.default(for: .video)
   }
@@ -80,6 +84,7 @@ class BarcodeScannerViewController: UIViewController {
                                                         target: self,
                                                         action: #selector(cancel)
     )
+    navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     updateToggleFlashButton()
   }
   
@@ -188,7 +193,10 @@ class BarcodeScannerViewController: UIViewController {
                                                         style: .plain,
                                                         target: self,
                                                         action: #selector(onToggleFlash)
+                                                        
     )
+      
+      navigationItem.rightBarButtonItem?.tintColor = UIColor.white
   }
   
   private func setFlashState(_ on: Bool) {
