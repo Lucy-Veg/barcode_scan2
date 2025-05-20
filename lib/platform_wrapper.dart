@@ -38,7 +38,7 @@ class BarcodeScanner {
     final events = _eventChannel.receiveBroadcastStream();
     final completer = Completer<ScanResult>();
 
-    late StreamSubscription subscription;
+    late StreamSubscription<dynamic> subscription;
     subscription = events.listen((dynamic event) async {
       if (event is String) {
         if (event == cameraAccessGranted) {
@@ -72,7 +72,8 @@ class BarcodeScanner {
       ..strings.addAll(options.strings)
       ..android = (proto.AndroidConfiguration()
         ..useAutoFocus = options.android.useAutoFocus
-        ..aspectTolerance = options.android.aspectTolerance);
+        ..aspectTolerance = options.android.aspectTolerance
+        ..appBarTitle = options.android.appBarTitle);
     final buffer = (await _channel.invokeMethod<List<int>>(
       'scan',
       config.writeToBuffer(),
